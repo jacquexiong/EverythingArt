@@ -1,0 +1,66 @@
+<% layout('layouts/boilerplate')%>
+
+<h1> Showing search result for <%=searchTerm%> </h1>
+
+<!-- data-masonry='{"percentPosition": true}' style="position: relative;" -->
+
+<div class="row mt-5 mb-3">
+  <% for (let artpiece of artpieces) {%>
+    <div class="col-sm-6 col-lg-4 mb-4" id="dbgallery">
+        <div class="card" style="width:18rem;">
+          <img class="card-img-top" alt="" src="<%=artpiece.images[0].url%>" style="object-fit: fill;" >
+
+            <div class="card-body">
+              <h5 class="card-title"><%= artpiece.title %> </h5>
+              <p class="card-text"><%= artpiece.artist %></p>
+              <a href="/artpieces/<%= artpiece._id %>" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+  <% }%>
+
+  <% for (let result of results) {%>
+    <div class="col-sm-6 col-lg-4 mb-4" id="apigallery">
+        <div class="card" style="width:20rem;">
+          <img class="card-img-top" alt="" src="<%=result.urls.small!==null ? result.urls.small : result.url.regular%>" style="object-fit: fill;" >
+
+            <div class="card-body">
+              <h5 class="card-title"><%= firstLetterUpper(result.description, result.alt_description) %> </h5>
+              <p class="card-text"><%= result.user.name %></p>
+              <a href="/artpieces/<%= result.id %>" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+  <% }%>
+</div>
+
+
+<!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> -->
+
+<script>
+  console.log('into script');
+
+    var msnry = new Masonry('.row', {
+        itemSelector: '.col-sm-6',
+        percentPosition: true
+    });
+
+    
+    imagesLoaded( msnry, function( instance ) {
+      console.log('all images are loaded');
+    });
+
+  (function(){
+    if( window.localStorage )
+    {
+      if( !localStorage.getItem('firstLoad') )
+      {
+        localStorage['firstLoad'] = true;
+        window.location.reload();
+        window.location.reload();
+      }  
+      else
+        localStorage.removeItem('firstLoad');
+    }
+  })();
+</script>

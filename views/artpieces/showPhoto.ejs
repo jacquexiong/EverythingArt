@@ -1,0 +1,29 @@
+<% layout('layouts/boilerplate')%>
+<div class="card mb-3" style="max-width: 680rem;">
+    <div class="row g-0">      
+      <div class="col-md-7">
+        <img src="<%=photo.urls.full%>" class="card-img-top" alt="">
+      </div>  
+  
+      <div class="col-md-5">
+        <div class="card-body">
+            <h2 class="card-title"><%= firstLetterUpper(photo.description, photo.alt_description)%></h2>
+            <h3 class="card-title"><%= photo.user.name %></h3>
+            <p class="card-text text-muted"><%= photo.location.name===null? '' : photo.location.name %></p>
+        </div>
+  
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="/user/<%= photo.user.username%>" class="link-dark"><%= photo.user.name %></a>
+            <a href="/user/<%= photo.user.username%>" class="btn btn-outline-dark" role="button"><%= photo.user.name %>'s Profile</a>
+          </li>
+          <li class="list-group-item">Want to share us with your photos? 
+            <a href="/artpieces/new">Submit Photo</a>
+          </li>
+        </ul>
+  
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+  </div>

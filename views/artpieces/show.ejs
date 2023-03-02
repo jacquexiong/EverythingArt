@@ -1,0 +1,68 @@
+<% layout('layouts/boilerplate')%>
+
+<!-- <div class="row">
+    <div class="col-8 offset-2"> -->
+
+<div class="card mb-3" style="max-width: 680rem;">
+  <div class="row g-0">      
+    <div class="col-md-7">
+      <div id="artpieceCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% artpiece.images.forEach((img, i) => { %>
+          <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+            <img src="<%= img.url%>" class="d-block w-100" alt="">
+          </div>
+          <% }) %>
+        </div>
+        <% if (artpiece.images.length > 1) {%>
+          <button class="carousel-control-prev" type="button" data-bs-target="#artpieceCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#artpieceCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        <% } %>
+      </div>
+    </div>  
+
+    <div class="col-md-5">
+      <div class="card-body">
+          <h2 class="card-title"><%= artpiece.title %></h2>
+          <h3 class="card-title"><%= artpiece.artist %></h3>
+          <!-- <p class="card-text text-muted"><%= artpiece.collectionName %></p> -->
+          <p class="card-text"><%= artpiece.description %></p>
+
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="/user/<%= artpiece.owner.id%>" class="link-dark"><%= artpiece.owner.username %></a>
+            <a href="/user/<%= artpiece.owner.id%>" class="btn btn-outline-dark" role="button"><%= artpiece.owner.username %>'s Profile</a>
+        </li>
+        <li class="list-group-item">Want to submit your own piece?
+          <a href="/artpieces/new">Submit Photos</a>
+        </li>
+      </ul>
+
+      <div class="card-body">
+
+        <!-- <p>
+          <form class="d-inline" action="/artpieces/<%= artpiece._id%>?_method=PUT" method="PUT">
+            <button class="btn btn-light" disabled>Save To List</button>
+          </form>
+        </p> -->
+        <% if (currentUser && artpiece.owner.equals(currentUser._id)){ %>
+        <p><a class="card-link btn btn-info" href="/artpieces/<%= artpiece._id%>/edit">Edit</a></p>
+
+        <form class="d-inline" action="/artpieces/<%= artpiece._id%>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- </div>
+</div> -->

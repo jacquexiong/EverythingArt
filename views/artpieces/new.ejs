@@ -1,0 +1,74 @@
+<% layout('layouts/boilerplate')%>
+<h1 class="text-center"> Submit Your Artwork</h1>
+<div class="col-6 offset-3">
+    <form action="/artpieces" method="POST" class="validated-form" enctype="multipart/form-data">
+        <div class="mb-3 mt-5">
+            <h4>Leave your Contact Information</h4>
+            <hr>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="owner">Name</label>
+            <input class="form-control" type="text" id="owner" value="<%=currentUser.username%>" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="owner">Email</label>
+            <input class="form-control" type="text" id="owner" value="<%=currentUser.email%>" readonly>
+        </div>
+<!-- 
+        <div class="mb-3">
+            <label class="form-label" for="contactPhone">Phone</label>
+            <div class="input-group">
+                <div class="input-group-text" id="country-code">+1</div>
+                <input class="form-control" type="text" id="contactPhone" name="artpiece[contactPhone]" required>
+            </div>
+        </div> -->
+
+        
+        
+        <div class="mb-3 mt-5">
+            <h4>Artwork Detail</h4>
+            <hr>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="title">Title</label>
+            <input class="form-control" type="text" id="title" name="artpiece[title]" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="artist">Artist</label>
+            <input class="form-control" type="text" id="artist" name="artpiece[artist]" required>
+        </div>
+
+        <!-- <div class="mb-3">
+            <label class="form-label" for="collectionName">Collection</label>
+            <input class="form-control" type="text" id="collectionName" name="artpiece[collectionName]" required>
+        </div> -->
+
+
+        <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" type="text" id="description" name="artpiece[description]" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-file custom-file">
+                <label for="image" class="form-label">
+                    <span class="form-file-text custom-file-label">Upload Images</span>
+                </label>
+                <input class="form-control" type="file" id="image" name="image" required multiple>
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <button class="btn btn-success"> Submit </button>
+        </div>
+       
+    </form>
+    <a href="/artpieces">All Artpieces</a>
+</div>
+
+
+

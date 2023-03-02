@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate')%>
+<!-- <body class="d-flex text-center text-black bg-light"> -->
+  <!-- <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main class="px-3">
+      <h1>Everything Art</h1>
+      <p class="lead"> Welcome to Everything Art! <br> Jump right in and explore our many artpieces. <br></p>
+      <a href="/artpieces" class="btn btn-outline-dark font-weight-bold ">View
+          Artpieces</a>
+    </main>
+  </div> -->
+<!-- </body> -->
+<div>
+  <h1>Everything Art</h1>
+      <p class="lead"> Welcome to Everything Art! <br> Jump right in and explore our many artworks. <br></p>
+      <a href="/artpieces" class="btn btn-outline-dark font-weight-bold ">View Artpieces</a>
+</div>
+
+<div class="card text-bg-dark mt-4 mb-3">
+  <img src="<%= photo!==null? photo.urls.full : 'https://images.unsplash.com/photo-1582561879362-0450a86181cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=902&q=80'%>" class="card-img" alt="https://images.unsplash.com/photo-1545989253-02cc26577f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80">
+  <div class="card-img-overlay">
+    <h5 class="card-title">By <%= photo.user.name!==null ? photo.user.name : ''%></h5>
+    <p class="card-text"><%= photo.description !==null ? photo.descriptopn : ''%></p>
+    <p class="card-text"><small>Created at <%= photo.created_at !==null ? photo.created_at : ''%></small></p>
+  </div>
+</div>

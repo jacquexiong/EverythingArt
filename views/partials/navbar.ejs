@@ -1,0 +1,52 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-3" href="#">Everything Art</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav me-auto mb-lg-0">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/artpieces">Artpieces</a>
+          <a class="nav-link text-nowrap" href="/artpieces/new">Submit Artworks</a>
+        </div>
+
+        <!-- <div class="navbar-nav ml-auto">
+          <% if (!currentUser) {%>
+          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/register">Register</a>
+          <% } else {%>
+          <a class="nav-link" href="/setting"><i class="bi bi-person" style="font-size: 1.5rem; color: black;"></i></a>
+          <a class="nav-link" href="/logout">Logout</a>
+          <% }%>
+        </div> -->
+        <div class="navbar-nav mx-auto">
+          <form action="/artpieces/search" method="GET" id="searchForm" class="d-flex" role="search">
+            <div class="col-lg-20">
+              <input class="form-control me-2" style="width:430px" type="search" name="query" placeholder="Search by theme" aria-label="Search" >
+            </div>
+          </form>
+        </div>
+        
+
+        <div class="navbar-nav me-3 mb-lg-0">
+          <% if (!currentUser) {%>
+            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" href="/register">Register</a>
+          <% } else {%>
+          <li class="nav-item dropdown">
+            <a data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="bi bi-person" style="font-size: 1.5rem; color: rgb(81, 78, 78);"></i></a>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+              <li><a class="dropdown-item" href="/user/my-collection">My Collection</a></li>
+              <li><a class="dropdown-item" href="/user/edit-settings">Settings</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              <!-- <li><hr class="dropdown-divider"></li> -->
+            </ul>
+          </li>
+          <% }%>
+        </div>
+
+
+      </div>
+    </div>
+  </nav>

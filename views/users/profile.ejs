@@ -1,0 +1,75 @@
+<% layout('layouts/boilerplate')%>
+<% console.log('entered')%>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="<%=results[0].user.profile_image.large%>" class="img-fluid rounded-start" alt="">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%=results[0].user.name%></h5>
+          <p class="card-text"><%=results[0].user.bio%></p>
+          <p class="card-text"><small class="text-muted"><%=results[0].user.location%></small></p>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- <h1><%=results[0].user.name%></h1>
+<h5 class="fw-semibold"><%=results[0].user.bio%></h5>
+<h5 class="text-muted"><%=results[0].user.location%></h5> -->
+<!-- data-masonry='{"percentPosition": true}' style="position: relative;" -->
+<div class="row mt-5 mb-3" id="gallery" data-masonry='{"percentPosition": true}' style="position: relative;">
+    <% for (let result of results) {%>
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card" style="width:18rem;">
+            <img class="card-img-top" alt="" src="<%=result.urls.small%>" style="object-fit: fill;" >
+
+                <div class="card-body">
+                <h5 class="card-title"><%= firstLetterUpper(result.description, result.alt_description) %> </h5>
+                <p class="card-text"><%= result.user.name %></p>
+                <a href="/artpieces/<%= result.id %>" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+  <% }%>
+</div>
+
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+<script>
+    console.log('into script');
+
+    var msnry = new Masonry('#gallery', {
+        itemSelector: '.col-sm-6',
+        percentPosition: true
+    });
+
+    imagesLoaded( msnry, function( instance ) {
+      console.log('all images are loaded');
+    });
+
+    (function(){
+        if( window.localStorage ){
+            if( !localStorage.getItem('firstLoad') ){
+                localStorage['firstLoad'] = true;
+                window.location.reload();
+                window.location.reload();
+            }  
+        else
+            localStorage.removeItem('firstLoad');
+        }
+    })();
+</script>
+
+<!-- <script>
+    var $grid = document.querySelector('.row mt-3 mb-3');
+    var msnry = new Masonry($grid, {
+        itemSelector: '.col-sm-6 col-lg-4 mb-4',
+        percentPosition: true
+    });
+
+    $grid.imagesLoaded().progress( function() {
+        $grid.masonry();
+    });
+</script> -->

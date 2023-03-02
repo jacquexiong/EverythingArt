@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate')%>
+<h1 class="text-center">My Collection</h1>
+
+<% if (artpieces.length===0){ %>
+    <h4>You haven't posted anything yet! </h4>
+    <h5 class="text-muted">Submit <a class="link-dark" href="/artpieces/new">here</a></h5>
+    
+    
+<% }%>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mb-3">
+    <% for (let artpiece of artpieces) {%>
+        <% console.log(artpiece)%>
+        <% if (currentUser && artpiece.owner.equals(currentUser._id)){ %>
+        <div class="col">
+            <div class="card" style="width:18rem;">
+                <img class="card-img-top" alt="" src="<%=artpiece.images[0].url%>" style="object-fit: fill;" >
+                <div class="card-body">
+                    <h5 class="card-title"><%= artpiece.title %> </h5>
+                    <p class="card-text"><%= artpiece.artist %></p>
+                    <a href="/artpieces/<%= artpiece._id %>" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+      <% }%>
+    <% }%>
+</div>

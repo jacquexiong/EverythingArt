@@ -1,0 +1,34 @@
+<% layout('layouts/boilerplate')%>
+<h1 class="text-center">Settings</h1>
+<div class="col-6 offset-3">
+    <form action="/user/edit-settings" method="POST" class="validated-form" novalidate>
+        <div class="mb-3">
+            <label class="form-label" for="name">Username</label>
+            <input class="form-control" type="text" id="username" name="newName" value="<%=currentUser.username%>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="fullname">Full Name</label>
+            <input class="form-control" type="text" id="fullname" name="fullname" value="<%=currentUser.fullname%>" required>
+        </div>
+    
+        <div class="mb-3">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" id="email" name="newEmail" value="<%=currentUser.email%>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="location">Location</label>
+            <input class="form-control" type="text" id="location" name="newLocation" value="<%=currentUser.location%>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="bio">Biography</label>
+            <input class="form-control" type="text" id="bio" name="newBio" value="<%=currentUser.bio%>">
+        </div>
+
+
+
+        <button class="btn btn-success">Change</button>
+    </form>
+</div>
