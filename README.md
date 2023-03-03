@@ -10,7 +10,7 @@ username: jessie<br/>
 password: 123123<br>
 username: jacque<br/>
 password: 123123<br>
-#### Deployment available until Dec 21
+
 #### The code in Github does not contain API keys, _npm start_ will not be able to connect to Unsplash service and MongoDB.
 
  
@@ -21,7 +21,7 @@ Everything Art was designed to meet the need for easily accessible, high-quality
  
 
 By Jacquelyn (Junting) Xiong & Lynette Huang
-Dec 16 2022
+Dec 16, 2022
 
  
 
