@@ -1,6 +1,3 @@
-# CS5610FinalProject
-
-
 # Everything Art - An Artwork Sharing Website
 
  
